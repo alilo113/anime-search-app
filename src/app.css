@@ -1,0 +1,65 @@
+body{
+  font-family: Arial, sans-serif;
+}
+
+form{
+  text-align: center;
+  padding: 20px;
+}
+
+.animeData {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  max-width: 200px;
+}
+
+h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #0073e6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005aad;
+}
+
+/* Styles for anime data display */
+h2 {
+  font-size: 24px;
+  color: #0073e6;
+}
+
+p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Message for no results */
+p.no-results {
+  color: #ff0000;
+  font-weight: bold;
+}
