@@ -7,12 +7,18 @@ form{
   padding: 20px;
 }
 
-.animeData {
+.animeData{
   display: flex;
+  gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-img {
+p{
+  max-width: 31.25rem;
+}
+
+img{
   max-width: 200px;
 }
 
@@ -41,6 +47,14 @@ button {
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
+  width: 100px;
+}
+
+@media screen and (max-width: 600px){
+  button{
+    width: 270px;
+    padding: 10px;
+  }
 }
 
 button:hover {
