@@ -7,19 +7,21 @@ form{
   padding: 20px;
 }
 
-.animeData{
+.animeData {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  min-width: 300px; /* Adjust the minimum width according to your content */
 }
+
 
 p{
   max-width: 31.25rem;
 }
 
 img{
-  max-width: 200px;
+  max-width: 250px;
 }
 
 h1 {
