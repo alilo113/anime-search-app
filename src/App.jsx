@@ -4,27 +4,23 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [animeName, setAnimeName] = useState("");
-  const [animeData, setAnimeData] = useState(null);
+  const [animeData, setAnimeData] = useState([]);
 
-  const fetchData = async (name) => {
-    const url = 'https://myanimelist.p.rapidapi.com/anime/search/Death%20Note';
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': '59b28c036bmshd5cfad74e6da3e1p125809jsnf50e58147066',
-        'X-RapidAPI-Host': 'myanimelist.p.rapidapi.com'
-      }};
-      
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
+        const url = `https://kitsu.io/api/edge/anime?filter[text]=${animeName}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        setAnimeData(data); // Update animeData state with fetched data
+        console.log(data)
       } catch (error) {
         console.error(error);
       }
     };
 
-  fetchData()
+      fetchData();
+  }, [animeName]);
 
   return (
     <div className="main">
