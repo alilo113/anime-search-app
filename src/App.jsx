@@ -1,31 +1,35 @@
 import "./app.css";
 import { AnimeData } from "./animeData";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
-  const [animeName, setAnimeName] = useState("");
-  const [animeData, setAnimeData] = useState([]);
+  const [animeName, setAnimeName] = useState('');
+  const [animeFetchedData, setAnimeData] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const url = `https://kitsu.io/api/edge/anime?filter[text]=${animeName}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        setAnimeData(data); // Update animeData state with fetched data
-        console.log(data)
-      } catch (error) {
-        console.error(error);
+  const fetchData = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    try {
+      const url = `https://kitsu.io/api/edge/anime?filter[text]=${animeName}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      if (data.data && data.data.length > 0) {
+        console.log('Needed Data:', data.data[0].attributes);
+        console.log('Needed Data:', data.data[0].attributes.posterImage.original);
+        setAnimeData(data.data[0]); // Setting fetched data in state
+      } else {
+        console.log('No data found.');
+        setAnimeData(null); // Set the state to null if no data is found
       }
-    };
-
-      fetchData();
-  }, [animeName]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="main">
       <h1>Anime Search App</h1>
-      <form>
+      <form onSubmit={fetchData}>
         <div className="data-inputs">
           <input
             type="text"
@@ -38,7 +42,7 @@ function App() {
           <button type="submit">Search</button>
         </div>
       </form>
-      <AnimeData />
+      <AnimeData fetchedData={animeFetchedData} />
     </div>
   );
 }
