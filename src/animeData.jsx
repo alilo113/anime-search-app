@@ -1,13 +1,6 @@
 import React from 'react';
 
 export function AnimeData({ fetchedData }) {
-  const animeData = {
-    title: "My Hero Academia",
-    story: "Born without special powers in a world where 80% of the population has them, Izuku Midoriya still dreams of becoming a hero",
-    releaseYear: 2016,
-    rating: 8.0,
-  };
-
   return (
     <div>
       {fetchedData && fetchedData.attributes ? (
